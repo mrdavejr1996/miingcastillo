@@ -1,0 +1,20 @@
+{
+	
+	"Print to console": {
+		"prefix": "s1",
+		"body": [
+			"import styled from 'styled-components';",
+			"export function Home(){",
+			
+			"return (<Container>",
+			"<h1>Home</h1>",
+				"</Container>);",
+			"}",
+			
+
+			"const Container = styled.div  ",
+			"``"
+	 	],
+		"description": "Log output to console"
+	 }
+}
