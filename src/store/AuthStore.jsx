@@ -1,4 +1,6 @@
 import { create } from 'zustand';
+import { supabase } from '../index';
+
 export const useAuthStore = create((set,get)=>({
 
     signInWithEmail: async (p)=>{
@@ -16,11 +18,10 @@ export const useAuthStore = create((set,get)=>({
 
     signOut: async()=>{
 
-        const {error} = await auth.supabase.signOut()
+        const {error} = await supabase.auth.signOut();
 
         if(error)
-        throw new Error
-        ("Ha ocurrido un error durante el cierre de sesión"+error);
+        throw new Error  ("Ha ocurrido un error durante el cierre de sesión"+error);
         
         
 

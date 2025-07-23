@@ -1,9 +1,9 @@
 import { create }  from "zustand";
 import { InsertarUsuarios } from "../index";
-
+import { supabase} from '../index';
 export const useUsuariosStore = create((set,get)=>({
 
-        isertarUsuarioAdmin:async (p)=>{
+        insertarUsuarioAdmin:async (p)=>{
 
             const{data,error} =  await supabase.auth.signUp({
                 email: p.correo,
@@ -11,15 +11,17 @@ export const useUsuariosStore = create((set,get)=>({
                 
 
             });
-            console.log("data del registro del usuario"+data);
+            console.log("data del registro del user auth"+data);
 
             if(error) return;
 
-            await InsertarUsuarios
+        const datauser =  await InsertarUsuarios
             ({idauth:data.user.id,
                 fecharegistro: new Date(),
                 tipouser:"admin"
             });
+
+            return datauser;
 
         },
 
